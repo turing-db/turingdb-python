@@ -1,0 +1,3 @@
+[submodule "turingdb"]
+	path = turingdb
+	url = git@github.com:turing-db/turingdb.git
