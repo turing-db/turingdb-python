@@ -2,8 +2,10 @@ import os
 import sys
 import subprocess
 from pathlib import Path
+from .turingdb import TuringDB, TuringDBException
+from .turingsh import main as turingsh
 
-__version__ = "0.1.0"
+__all__ = ["TuringDB", "TuringDBException", "turingsh"]
 
 def get_executable_path():
     """Get the path to the compiled C++ executable."""
