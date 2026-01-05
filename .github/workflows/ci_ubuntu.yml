@@ -16,6 +16,9 @@ jobs:
           python-version: ["3.10", "3.11", "3.12", "3.13"]
 
     steps:
+    - uses: webfactory/ssh-agent@v0.9.0
+      with:
+            ssh-private-key: ${{ secrets.TURINGDB_DEPLOY_KEY }}
     - uses: actions/checkout@v4
       with:
             # Fetch submodules using the built-in token over HTTPS
