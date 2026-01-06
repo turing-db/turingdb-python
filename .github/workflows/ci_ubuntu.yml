@@ -39,6 +39,8 @@ jobs:
     - name: Install python
       shell: bash
       run: uv python install ${{ matrix.python-version }}
+    - name: Run mypy
+      run: uv run mypy ./python
     - name: Build wheel
       shell: bash
       run: uv build --wheel --python ${{ matrix.python-version }}
