@@ -116,7 +116,8 @@ class TuringDB:
 
         res = self.query("CHANGE NEW")
         self._params["change"] = res.values["changeID"][0]
-        return self._params["change"]
+        change_id = int(self._params["change"])
+        return change_id
 
 
     def set_graph(self, graph_name: str):
