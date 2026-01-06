@@ -32,6 +32,7 @@ class S3Client:
         self._s3_bucket = self._s3_resource.Bucket(bucket_name)  # type: ignore
 
         credentials = self._s3_session.get_credentials()
+        assert credentials is not None
         region = self._s3_session.region_name
         secret_key = credentials.secret_key
         access_key = credentials.access_key
