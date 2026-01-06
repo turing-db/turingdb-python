@@ -33,6 +33,7 @@ jobs:
     # 4. Now fetch submodules using SSH
     - name: Fetch submodules
       run: git submodule update --init --recursive
+
     - name: Install uv
       uses: astral-sh/setup-uv@v3
     - name: Install python
