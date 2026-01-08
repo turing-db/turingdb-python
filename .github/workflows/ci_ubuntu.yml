@@ -12,7 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest-m
-    container: quay.io/pypa/manylinux_2_35_x86_64
+    container: quay.io/pypa/manylinux_2_28_x86_64
 
     strategy:
       matrix:
