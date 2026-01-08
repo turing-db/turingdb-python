@@ -19,7 +19,7 @@ jobs:
 
     steps:
     - name: Install sudo and pip
-      run: apt-get update && apt-get install -qqy sudo pip
+      run: apt-get update && apt-get install -qqy sudo pip patchelf
 
     - uses: actions/checkout@v4
     - name: Checkout submodules
