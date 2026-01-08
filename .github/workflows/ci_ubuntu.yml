@@ -19,21 +19,6 @@ jobs:
           python-version: ["3.10", "3.11", "3.12", "3.13"]
 
     steps:
-    # 1. Checkout main repo first (uses default GITHUB_TOKEN over HTTPS)
-    - uses: actions/checkout@v4
-      with:
-            submodules: false  # Don't fetch submodules yet
-    
-    # 2. Set up SSH agent with deploy key
-    - uses: webfactory/ssh-agent@v0.9.0
-      with:
-            ssh-private-key: ${{ secrets.TURINGDB_DEPLOY_KEY }}
-    
-    # 3. Configure git to use SSH for GitHub
-    - name: Configure git to use SSH for GitHub
-      run: git config --global url."git@github.com:".insteadOf "https://github.com/"
-    
-    # 4. Now fetch submodules using SSH
     - name: Fetch submodules
       run: git submodule update --init --recursive
 
