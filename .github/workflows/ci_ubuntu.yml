@@ -12,6 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest-m
+    container: quay.io/pypa/manylinux_2_35_x86_64
 
     strategy:
       matrix:
@@ -46,7 +47,7 @@ jobs:
       run: uv build --wheel --python ${{ matrix.python-version }}
     - name: Repair wheel
       shell: bash
-      run: uv run auditwheel repair dist/* --plat manylinux_2_35_x86_64
+      run: uv run auditwheel repair dist/*
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
