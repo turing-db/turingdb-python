@@ -35,6 +35,16 @@ jobs:
     - name: Build wheel
       shell: bash
       run: uv build --wheel --python ${{ matrix.python-version }}
+
+    - name: Install wheel in venv
+      run: |
+            pyversion="${{ matrix.python-version }}"
+            pytag="${pyversion/./}"  # 3.11 -> 311
+            uv venv --python ${{ matrix.python-version }}
+            source .venv/bin/activate
+            uv pip install wheelhouse/*cp${pytag}*.whl
+            python -c "import turingdb; print(turingdb.__version__)"
+
     - name: Repair wheel
       shell: bash
       run: uv run auditwheel repair dist/*
@@ -48,6 +58,7 @@ jobs:
   release:
     needs: build # Wait for all build jobs to complete
     runs-on: ubuntu-latest
+
     environment:
       name: pypi
       url: https://pypi.org/p/turingdb
