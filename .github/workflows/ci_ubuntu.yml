@@ -43,7 +43,7 @@ jobs:
             pytag="${pyversion/./}"  # 3.11 -> 311
             uv venv --python ${{ matrix.python-version }}
             source .venv/bin/activate
-            whl=$(ls wheelhouse/*cp${pytag}*.whl)
+            whl=$(ls dist/*cp${pytag}*.whl)
             uv pip install "$whl"
             python -c "import turingdb; print(turingdb.__version__)"
 
