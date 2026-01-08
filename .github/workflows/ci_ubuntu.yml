@@ -18,8 +18,8 @@ jobs:
           python-version: ["3.10", "3.11", "3.12", "3.13"]
 
     steps:
-    - name: Install sudo
-      run: apt-get update && apt-get install -qqy sudo
+    - name: Install sudo and pip
+      run: apt-get update && apt-get install -qqy sudo pip
 
     - uses: actions/checkout@v4
     - name: Checkout submodules
