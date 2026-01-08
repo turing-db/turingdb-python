@@ -36,19 +36,9 @@ jobs:
       shell: bash
       run: uv build --wheel --python ${{ matrix.python-version }}
 
-    - name: Install wheel in venv
-      shell: bash
-      run: |
-            pyversion="${{ matrix.python-version }}"
-            pytag="${pyversion/./}"  # 3.11 -> 311
-            uv venv --python ${{ matrix.python-version }}
-            source .venv/bin/activate
-            whl=$(ls dist/*cp${pytag}*.whl)
-            uv pip install "$whl"
-
     - name: Repair wheel
       shell: bash
-      run: uv run auditwheel repair dist/*
+      run: pip install auditwheel && auditwheel repair dist/*
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
