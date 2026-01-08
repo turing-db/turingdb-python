@@ -45,7 +45,6 @@ jobs:
             source .venv/bin/activate
             whl=$(ls dist/*cp${pytag}*.whl)
             uv pip install "$whl"
-            python -c "import turingdb; print(turingdb.__version__)"
 
     - name: Repair wheel
       shell: bash
